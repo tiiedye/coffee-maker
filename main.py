@@ -121,3 +121,45 @@ def make_drink(order):
         else:
             print("Not enough water, please check levels")
 
+
+def make_order():
+    print("What would you like to order?")
+    print("\tEspresso [1]")
+    print("\tLatte [2]")
+    print("\tCappuccino [3]")
+
+    option = input("Enter 1, 2, or 3, or anything else to return to the menu: ")
+
+    if option == "1":
+        order = "espresso"
+    elif option == "2":
+        order = "latte"
+    elif option == "3":
+        order = "cappuccino"
+    else:
+        order = "none"
+
+    return order
+
+
+turned_off = False
+while not turned_off:
+    print("Welcome! Please choose from the Menu:")
+    user_input = print_menu()
+
+    if user_input == "1":
+        coffee = make_order()
+
+        if coffee != "none":
+            print(f"Total: ${MENU[coffee]['cost']}")
+            payment_amount = input("Please enter payment amount: $")
+
+            correct_payment = check_payment(payment_amount, coffee)
+
+            if correct_payment:
+                make_drink(coffee)
+    elif user_input == "2":
+        check_resources()
+    elif user_input == "3":
+        print("Goodbye!")
+        turned_off = True
