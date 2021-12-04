@@ -11,9 +11,9 @@ def print_menu():
     print("\tOrder Coffee [1]")
     print("\tCheck Resources [2]")
     print("\tTurn Off [3]")
-    option = input("\n Enter 1, 2, or 3: ")
+    option = input("\nEnter 1, 2, or 3: ")
 
-    while option != "1" or option != "2" or option != "3":
+    while option != "1" and option != "2" and option != "3":
         option = input("Invalid option, Enter 1, 2 or 3: ")
 
     return option
@@ -49,7 +49,7 @@ def add_resources():
 
         option = input("Enter 1, 2, 3, or 4: ")
 
-        while option != "1" or option != "2" or option != "3" or option != "4":
+        while option != "1" and option != "2" and option != "3":
             option = input("Invalid option, Enter 1, 2, 3, or 4: ")
 
         if option == "1":
@@ -70,8 +70,10 @@ def add_resources():
             else:
                 resources['coffee'] = 100
                 print("Coffee filled")
-        else:
+        elif option == "4":
             print("Returning to Menu")
+        else:
+            print("Invalid option. Returning to Menu")
 
 
 def check_payment(payment, order):
@@ -144,7 +146,6 @@ def make_order():
 
 turned_off = False
 while not turned_off:
-    print("Welcome! Please choose from the Menu:")
     user_input = print_menu()
 
     if user_input == "1":
@@ -152,7 +153,7 @@ while not turned_off:
 
         if coffee != "none":
             print(f"Total: ${MENU[coffee]['cost']}")
-            payment_amount = input("Please enter payment amount: $")
+            payment_amount = float(input("Please enter payment amount: $"))
 
             correct_payment = check_payment(payment_amount, coffee)
 
