@@ -49,7 +49,7 @@ def add_resources():
 
         option = input("Enter 1, 2, 3, or 4: ")
 
-        while option != "1" and option != "2" and option != "3":
+        while option != "1" and option != "2" and option != "3" and option != "4":
             option = input("Invalid option, Enter 1, 2, 3, or 4: ")
 
         if option == "1":
@@ -71,9 +71,8 @@ def add_resources():
                 resources['coffee'] = 100
                 print("Coffee filled")
         elif option == "4":
+            return_to_menu = True
             print("Returning to Menu")
-        else:
-            print("Invalid option. Returning to Menu")
 
 
 def check_payment(payment, order):
@@ -101,9 +100,9 @@ def make_drink(order):
                 print("bZZzzRRRttZZzz")
                 print("Drink Made!")
             else:
-                print("Not enough coffee, please check levels")
+                print("Not enough coffee, please check levels. Refunding Payment")
         else:
-            print("Not enough water, please check levels")
+            print("Not enough water, please check levels. Refunding Payment")
     else:
         water_level = resources['water'] - MENU[order]['ingredients']['water']
         if water_level >= 0:
@@ -117,11 +116,11 @@ def make_drink(order):
                     print("bZZzzRRRttZZzz")
                     print("Drink Made!")
                 else:
-                    print("Not enough coffee, please check levels")
+                    print("Not enough coffee, please check levels. Refunding Payment")
             else:
-                print("Not enough milk, please check levels")
+                print("Not enough milk, please check levels. Refunding Payment")
         else:
-            print("Not enough water, please check levels")
+            print("Not enough water, please check levels. Refunding Payment")
 
 
 def make_order():
